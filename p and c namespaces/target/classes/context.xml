@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="someLocale" class="java.util.Locale" factory-method="getDefault"></bean>
+
+	<bean id="someUser" class="szerszen.springtutorial.User">
+		<constructor-arg value="jan"></constructor-arg>
+		<constructor-arg value="23"></constructor-arg>
+		<constructor-arg ref="someLocale"></constructor-arg>
+	</bean>
+
+	<bean id="someBean" class="szerszen.springtutorial.SomeBean">
+		<property name="user" ref="someUser"></property>
+		<property name="stringValue" value="some string value"></property>
+		<property name="intValue" value="100"></property>
+	</bean>
+
+	<bean id="someUser2" class="szerszen.springtutorial.User" c:name="janek"
+		c:age="32" c:locale-ref="someLocale"></bean>
+		
+	<bean id="someUser3" class="szerszen.springtutorial.User" c:_0="Janusz"
+		c:_1="32" c:_2-ref="someLocale"></bean>
+
+	<bean id="someBean2" class="szerszen.springtutorial.SomeBean"
+		p:stringValue="some string value" p:intValue="43" p:user-ref="someUser3"></bean>
+
+</beans>
